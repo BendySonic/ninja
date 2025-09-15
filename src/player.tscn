@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckpy6pimwoumv"]
+[gd_scene load_steps=5 format=3 uid="uid://ckpy6pimwoumv"]
 
 [ext_resource type="Script" uid="uid://nu3arjcxesy8" path="res://src/player.gd" id="1_ohfbi"]
 
@@ -8,13 +8,25 @@ size = Vector2(18, 18)
 [sub_resource type="QuadMesh" id="QuadMesh_ndsek"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lowyb"]
+size = Vector2(30, 20)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_ohfbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_tpct2")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0.694078, 0.883535, 2.69532e-06, 1)
 mesh = SubResource("QuadMesh_ndsek")
+
+[node name="OnFloor" type="Area2D" parent="."]
+position = Vector2(0, 10)
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnFloor"]
+shape = SubResource("RectangleShape2D_lowyb")
