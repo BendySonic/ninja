@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckpy6pimwoumv"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ohfbi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ndsek"]
+size = Vector2(30, 30)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ohfbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.694078, 0.883535, 2.69532e-06, 1)
+mesh = SubResource("QuadMesh_ndsek")
