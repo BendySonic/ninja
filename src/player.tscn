@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckpy6pimwoumv"]
+[gd_scene load_steps=7 format=3 uid="uid://ckpy6pimwoumv"]
 
 [ext_resource type="Script" uid="uid://nu3arjcxesy8" path="res://src/player.gd" id="1_ohfbi"]
+[ext_resource type="Texture2D" uid="uid://d3fewh2rgdosc" path="res://res/player_particle.png" id="2_gmfve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpct2"]
 size = Vector2(18, 18)
@@ -10,6 +11,10 @@ size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lowyb"]
 size = Vector2(30, 20)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ehvfd"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -30,3 +35,9 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OnFloor"]
 shape = SubResource("RectangleShape2D_lowyb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+amount = 100
+texture = ExtResource("2_gmfve")
+process_material = SubResource("ParticleProcessMaterial_ehvfd")
