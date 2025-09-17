@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://orqmfyxjyddf"]
+
+[ext_resource type="Texture2D" uid="uid://c8f2b8mpqjg" path="res://res/coin.png" id="1_d5gmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qpsl"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6qpsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d5gmh")

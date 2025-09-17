@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+signal coin_collected
 
-const SPEED = 300.0
+const SPEED = 350.0
 const JUMP_VELOCITY = -500.0
+const WALL_VELOCITY = -550.0
 const SECOND_JUMP_VELOCITY = -500.0
 
 @onready var on_floor: Area2D = get_node("OnFloor")
@@ -10,7 +12,6 @@ const SECOND_JUMP_VELOCITY = -500.0
 @onready var gpu_particles: GPUParticles2D = get_node("GPUParticles2D")
 
 var has_second_jump := true
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -22,8 +23,12 @@ func _physics_process(delta: float) -> void:
 	
 	gpu_particles.emitting = is_on_wall()
 	# Handle jump.
-	if Input.is_action_pressed("jump") and (is_on_floor() or is_on_floorc()):
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or is_on_floorc()):
 		velocity.y = JUMP_VELOCITY
+	
+	if Input.is_action_pressed("jump") and (is_on_wall()):
+		velocity.y = WALL_VELOCITY
+	
 	elif Input.is_action_just_pressed("jump") and has_second_jump:
 		velocity.y = SECOND_JUMP_VELOCITY
 		has_second_jump = false
