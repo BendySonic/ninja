@@ -2,13 +2,12 @@ extends CharacterBody2D
 
 signal coin_collected
 
-const SPEED = 350.0
-const JUMP_VELOCITY = -500.0
-const WALL_VELOCITY = -550.0
-const SECOND_JUMP_VELOCITY = -500.0
+const SPEED = 400.0
+const JUMP_VELOCITY = -650.0
+const WALL_VELOCITY = -650.0
+const SECOND_JUMP_VELOCITY = -600.0
 
 @onready var on_floor: Area2D = get_node("OnFloor")
-@onready var on_wall: Area2D = get_node("OnWall")
 @onready var gpu_particles: GPUParticles2D = get_node("GPUParticles2D")
 @onready var jump_particles: GPUParticles2D = get_node("JumpParticles")
 
@@ -33,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("jump") and (is_on_wall()):
 		velocity.y = WALL_VELOCITY
-	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

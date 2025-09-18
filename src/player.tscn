@@ -1,22 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckpy6pimwoumv"]
+[gd_scene load_steps=8 format=3 uid="uid://ckpy6pimwoumv"]
 
 [ext_resource type="Script" uid="uid://nu3arjcxesy8" path="res://src/player.gd" id="1_ohfbi"]
+[ext_resource type="Texture2D" uid="uid://eshn4bjaxrkm" path="res://res/player.png" id="2_ehvfd"]
 [ext_resource type="Texture2D" uid="uid://d3fewh2rgdosc" path="res://res/player_particle.png" id="2_gmfve"]
+[ext_resource type="Texture2D" uid="uid://3u5cwwt7xa6y" path="res://res/gaster_blaster.png" id="4_bktlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpct2"]
-size = Vector2(18, 18)
-
-[sub_resource type="QuadMesh" id="QuadMesh_ndsek"]
-size = Vector2(20, 20)
+size = Vector2(45, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lowyb"]
-size = Vector2(30, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmfve"]
-size = Vector2(9.5, 21)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehvfd"]
-size = Vector2(40, 40)
+size = Vector2(32, 50)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ehvfd"]
 particle_flag_disable_z = true
@@ -40,9 +33,8 @@ script = ExtResource("1_ohfbi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tpct2")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0.694078, 0.883535, 2.69532e-06, 1)
-mesh = SubResource("QuadMesh_ndsek")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ehvfd")
 
 [node name="OnFloor" type="Area2D" parent="."]
 position = Vector2(0, 10)
@@ -53,23 +45,6 @@ collision_mask = 5
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_lowyb")
 
-[node name="OnWall" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OnWall"]
-position = Vector2(10.25, -5.5)
-shape = SubResource("RectangleShape2D_gmfve")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="OnWall"]
-position = Vector2(-10, -5)
-shape = SubResource("RectangleShape2D_gmfve")
-
-[node name="OnCoin" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OnCoin"]
-shape = SubResource("RectangleShape2D_ehvfd")
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, 7)
 emitting = false
@@ -78,6 +53,7 @@ texture = ExtResource("2_gmfve")
 process_material = SubResource("ParticleProcessMaterial_ehvfd")
 
 [node name="JumpParticles" type="GPUParticles2D" parent="."]
+z_index = -1
 position = Vector2(0, 7)
 emitting = false
 amount = 16
@@ -87,3 +63,8 @@ interp_to_end = 0.3
 one_shot = true
 explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_ehvfd")
+
+[node name="GasterBlaster" type="Sprite2D" parent="."]
+position = Vector2(-107, -88)
+rotation = 0.664117
+texture = ExtResource("4_bktlc")
