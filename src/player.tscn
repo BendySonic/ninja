@@ -10,7 +10,7 @@ size = Vector2(18, 18)
 size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lowyb"]
-size = Vector2(30, 20)
+size = Vector2(30, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmfve"]
 size = Vector2(9.5, 21)
@@ -50,6 +50,7 @@ collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OnFloor"]
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_lowyb")
 
 [node name="OnWall" type="Area2D" parent="."]
@@ -74,4 +75,15 @@ position = Vector2(0, 7)
 emitting = false
 amount = 16
 texture = ExtResource("2_gmfve")
+process_material = SubResource("ParticleProcessMaterial_ehvfd")
+
+[node name="JumpParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+emitting = false
+amount = 16
+texture = ExtResource("2_gmfve")
+lifetime = 0.5
+interp_to_end = 0.3
+one_shot = true
+explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_ehvfd")

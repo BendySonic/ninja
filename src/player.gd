@@ -10,6 +10,7 @@ const SECOND_JUMP_VELOCITY = -500.0
 @onready var on_floor: Area2D = get_node("OnFloor")
 @onready var on_wall: Area2D = get_node("OnWall")
 @onready var gpu_particles: GPUParticles2D = get_node("GPUParticles2D")
+@onready var jump_particles: GPUParticles2D = get_node("JumpParticles")
 
 var has_second_jump := true
 
@@ -25,13 +26,14 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or is_on_floorc()):
 		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_just_pressed("jump") and has_second_jump:
+		velocity.y = SECOND_JUMP_VELOCITY
+		jump_particles.emitting = true
+		has_second_jump = false
 	
 	if Input.is_action_pressed("jump") and (is_on_wall()):
 		velocity.y = WALL_VELOCITY
 	
-	elif Input.is_action_just_pressed("jump") and has_second_jump:
-		velocity.y = SECOND_JUMP_VELOCITY
-		has_second_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
