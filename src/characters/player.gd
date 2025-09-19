@@ -1,6 +1,5 @@
+class_name Player
 extends CharacterBody2D
-
-signal coin_collected
 
 const SPEED = 400.0
 const JUMP_VELOCITY = -650.0
@@ -8,7 +7,7 @@ const WALL_VELOCITY = -650.0
 const SECOND_JUMP_VELOCITY = -600.0
 
 @onready var on_floor: Area2D = get_node("OnFloor")
-@onready var gpu_particles: GPUParticles2D = get_node("GPUParticles2D")
+@onready var wall_particles: GPUParticles2D = get_node("WallParticles")
 @onready var jump_particles: GPUParticles2D = get_node("JumpParticles")
 
 var has_second_jump := true
@@ -21,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() or is_on_floorc():
 		has_second_jump = true
 	
-	gpu_particles.emitting = is_on_wall()
+	wall_particles.emitting = is_on_wall()
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or is_on_floorc()):
 		velocity.y = JUMP_VELOCITY
@@ -30,11 +29,11 @@ func _physics_process(delta: float) -> void:
 		jump_particles.emitting = true
 		has_second_jump = false
 	
+	# Handle wall climb
 	if (Input.is_action_pressed("left") or Input.is_action_pressed("right")) and (is_on_wall()):
 		velocity.y = WALL_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	# Direction
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -43,5 +42,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+# Coyote jump
 func is_on_floorc() -> bool:
 	return on_floor.has_overlapping_bodies()
