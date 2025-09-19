@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckpy6pimwoumv"]
+[gd_scene load_steps=8 format=3 uid="uid://ckpy6pimwoumv"]
 
-[ext_resource type="Script" uid="uid://nu3arjcxesy8" path="res://src/player.gd" id="1_ohfbi"]
+[ext_resource type="Script" uid="uid://nu3arjcxesy8" path="res://src/characters/player.gd" id="1_ohfbi"]
 [ext_resource type="Texture2D" uid="uid://eshn4bjaxrkm" path="res://res/player.png" id="2_ehvfd"]
 [ext_resource type="Texture2D" uid="uid://d3fewh2rgdosc" path="res://res/player_particle.png" id="2_gmfve"]
 
@@ -9,6 +9,10 @@ size = Vector2(45, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lowyb"]
 size = Vector2(90, 60)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4c870"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ehvfd"]
 particle_flag_disable_z = true
@@ -32,9 +36,6 @@ script = ExtResource("1_ohfbi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tpct2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ehvfd")
-
 [node name="OnFloor" type="Area2D" parent="."]
 position = Vector2(0, 10)
 collision_layer = 4
@@ -44,7 +45,19 @@ collision_mask = 5
 position = Vector2(-0.5, 7)
 shape = SubResource("RectangleShape2D_lowyb")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ehvfd")
+
+[node name="Animation" type="Label" parent="Sprite2D"]
+offset_left = -19.0
+offset_top = -9.0
+offset_right = 21.0
+offset_bottom = 14.0
+text = "idle"
+label_settings = SubResource("LabelSettings_4c870")
+horizontal_alignment = 1
+
+[node name="WallParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 7)
 emitting = false
 amount = 16
@@ -62,3 +75,7 @@ interp_to_end = 0.3
 one_shot = true
 explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_ehvfd")
+
+[node name="EnemyMarker" type="Marker2D" parent="."]
+position = Vector2(154, -12)
+gizmo_extents = 20.0

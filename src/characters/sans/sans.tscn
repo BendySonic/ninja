@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcm84i6pte5sw"]
+
+[ext_resource type="PackedScene" uid="uid://ckpy6pimwoumv" path="res://src/characters/player.tscn" id="1_ufbvv"]
+[ext_resource type="Script" uid="uid://d0bov4w8c6exw" path="res://src/characters/sans/sans.gd" id="2_fdy6e"]
+
+[node name="Sans" instance=ExtResource("1_ufbvv")]
+script = ExtResource("2_fdy6e")
