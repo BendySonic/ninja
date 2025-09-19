@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr15t38r61cen"]
+
+[ext_resource type="Script" uid="uid://bhc3pcnlfh6nd" path="res://gaster_blaster.gd" id="1_i0124"]
+[ext_resource type="Texture2D" uid="uid://3u5cwwt7xa6y" path="res://res/gaster_blaster.png" id="1_mlnt4"]
+
+[node name="GasterBlaster" type="Area2D"]
+script = ExtResource("1_i0124")
+
+[node name="GasterBlaster" type="Sprite2D" parent="."]
+texture = ExtResource("1_mlnt4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(2000, 0)

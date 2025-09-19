@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		jump_particles.emitting = true
 		has_second_jump = false
 	
-	if Input.is_action_pressed("jump") and (is_on_wall()):
+	if (Input.is_action_pressed("left") or Input.is_action_pressed("right")) and (is_on_wall()):
 		velocity.y = WALL_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
