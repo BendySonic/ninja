@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr15t38r61cen"]
 
-[ext_resource type="Script" uid="uid://bhc3pcnlfh6nd" path="res://gaster_blaster.gd" id="1_i0124"]
+[ext_resource type="Script" uid="uid://bhc3pcnlfh6nd" path="res://src/gaster_blaster.gd" id="1_i0124"]
 [ext_resource type="Texture2D" uid="uid://3u5cwwt7xa6y" path="res://res/gaster_blaster.png" id="1_mlnt4"]
 
 [node name="GasterBlaster" type="Area2D"]

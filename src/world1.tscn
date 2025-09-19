@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckpy6pimwoumv" path="res://src/player.tscn" id="1_3a7t0"]
 [ext_resource type="Texture2D" uid="uid://bubbb11n1hp86" path="res://res/tile.png" id="2_erstj"]
-[ext_resource type="PackedScene" uid="uid://dr15t38r61cen" path="res://gaster_blaster.tscn" id="3_xb8yc"]
+[ext_resource type="PackedScene" uid="uid://dr15t38r61cen" path="res://src/gaster_blaster.tscn" id="3_xb8yc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erstj"]
 texture = ExtResource("2_erstj")
