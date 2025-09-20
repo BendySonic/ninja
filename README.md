@@ -1,2 +1,2 @@
 # Indie Smash
-A simple tech demo for platformer
+A simple tech demo for fighting platformer about indie games
