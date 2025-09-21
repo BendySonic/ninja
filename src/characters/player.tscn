@@ -51,11 +51,20 @@ scale = Vector2(1, 1.43333)
 texture = ExtResource("2_ehvfd")
 
 [node name="Animation" type="Label" parent="Sprite2D"]
-offset_left = -19.0
-offset_top = -9.0
-offset_right = 21.0
-offset_bottom = 14.0
+offset_left = -20.0
+offset_top = -21.1047
+offset_right = 20.0
+offset_bottom = 1.8953
 text = "idle"
+label_settings = SubResource("LabelSettings_4c870")
+horizontal_alignment = 1
+
+[node name="Ability" type="Label" parent="Sprite2D"]
+offset_left = -19.0
+offset_top = 4.70931
+offset_right = 21.0
+offset_bottom = 27.7093
+text = "1"
 label_settings = SubResource("LabelSettings_4c870")
 horizontal_alignment = 1
 
@@ -79,5 +88,5 @@ explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_ehvfd")
 
 [node name="EnemyMarker" type="Marker2D" parent="."]
-position = Vector2(154, -12)
+position = Vector2(50, 0)
 gizmo_extents = 20.0
