@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcm84i6pte5sw"]
+[gd_scene load_steps=8 format=3 uid="uid://dcm84i6pte5sw"]
 
 [ext_resource type="PackedScene" uid="uid://ckpy6pimwoumv" path="res://src/characters/player.tscn" id="1_ufbvv"]
 [ext_resource type="Script" uid="uid://d0bov4w8c6exw" path="res://src/characters/sans/sans.gd" id="2_fdy6e"]
@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_ysnn3"]
 resource_name = "1_start"
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -26,10 +27,10 @@ tracks/1/path = NodePath("Sprite2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0, 0.4, 0.6, 1, 1.8),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.594604, 1),
 "update": 0,
-"values": [Vector2(0, -9), Vector2(65, -10)]
+"values": [Vector2(0, -9), Vector2(65, -10), Vector2(65, -10), Vector2(62, -10), Vector2(56, -10)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -50,10 +51,22 @@ tracks/3/path = NodePath("Sprite2D2:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1, 1.8),
+"transitions": PackedFloat32Array(-2, 1, 0.615572, 1, 0.659754, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.917857, 0.791667)]
+"values": [Vector2(0.5, 0.5), Vector2(0.917857, 0.791667), Vector2(0.917857, 0.791667), Vector2(0.917857, 0.683333), Vector2(0.729464, 1.1), Vector2(0.607589, 1.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D2/MeshInstance2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_n4h8u"]
@@ -106,12 +119,27 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0.5, 0.5)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D2/MeshInstance2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gho3v"]
 _data = {
 &"1_start": SubResource("Animation_ysnn3"),
 &"RESET": SubResource("Animation_n4h8u")
 }
+
+[sub_resource type="QuadMesh" id="QuadMesh_gdrah"]
+size = Vector2(2000, 35)
 
 [node name="Sans" instance=ExtResource("1_ufbvv")]
 script = ExtResource("2_fdy6e")
@@ -127,3 +155,8 @@ z_index = -1
 position = Vector2(0, -9)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_gdrah")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Sprite2D2" index="0"]
+z_index = -1
+position = Vector2(1000, 0)
+mesh = SubResource("QuadMesh_gdrah")
