@@ -15,6 +15,8 @@ var _state: State = State.IDLE:
 var _ability: Ability = Ability.NONE:
 	set = _set_ability
 
+var _look: int = 1
+
 # Collision
 @onready var on_floor: Area2D = get_node("OnFloor")
 
@@ -23,7 +25,6 @@ var _ability: Ability = Ability.NONE:
 @onready var jump_particles: GPUParticles2D = get_node("JumpParticles")
 @onready var animation_player: Label = get_node("Sprite2D/Animation")
 
-@onready var ability_animation_player := get_node("AbilityAnimationPlayer")
 @onready var ability_label: Label = get_node("Sprite2D/Ability")
 
 
@@ -54,6 +55,7 @@ func _movement_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
+		_look = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
@@ -64,7 +66,7 @@ func _input(event: InputEvent) -> void:
 func _ability_input(event: InputEvent) -> void:
 	if event.is_action_pressed("1"):
 		_set_ability(Ability.ONE)
-		_set_ability_animation("1_start")
+		_ability1()
 	elif event.is_action_pressed("2"):
 		_set_ability(Ability.TWO)
 	elif event.is_action_pressed("3"):
@@ -95,5 +97,14 @@ func _is_on_floorc() -> bool:
 func _set_animation(anim_name: String) -> void:
 	animation_player.text = anim_name
 
-func _set_ability_animation(anim_name: String) -> void:
-	ability_animation_player.play(anim_name)
+func _ability1() -> bool:
+	return true
+
+func _ability2() -> bool:
+	return true
+
+func _ability3() -> bool:
+	return true
+
+func _ability4() -> bool:
+	return true
