@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://bw2vekev7u2de"]
+[gd_scene load_steps=9 format=4 uid="uid://bw2vekev7u2de"]
 
 [ext_resource type="Script" uid="uid://d20k1fhy35xss" path="res://src/world_1.gd" id="1_xb8yc"]
 [ext_resource type="Texture2D" uid="uid://bubbb11n1hp86" path="res://res/tile.png" id="2_erstj"]
 [ext_resource type="PackedScene" uid="uid://dcm84i6pte5sw" path="res://src/characters/sans/sans.tscn" id="2_xb8yc"]
+[ext_resource type="Texture2D" uid="uid://cfvdycp0d4u25" path="res://res/sans_concept.jpg" id="4_2g120"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8yc"]
 size = Vector2(55, 55)
@@ -65,3 +66,8 @@ drag_left_margin = 0.15
 drag_top_margin = 0.35
 drag_right_margin = 0.15
 drag_bottom_margin = 0.35
+
+[node name="Photo2025-10-0120-09-31" type="Sprite2D" parent="."]
+position = Vector2(-197, -305)
+scale = Vector2(0.418006, 0.410937)
+texture = ExtResource("4_2g120")
